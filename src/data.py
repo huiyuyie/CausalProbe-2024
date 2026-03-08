@@ -230,7 +230,7 @@ def load_passages(path):
         return
     logger.info(f"Loading passages from: {path}")
     passages = []
-    with open(path) as fin:
+    with open(path, "r", encoding="utf-8") as fin:
         if path.endswith(".jsonl"):
             for k, line in enumerate(fin):
                 ex = json.loads(line)

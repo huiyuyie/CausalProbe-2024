@@ -19,7 +19,8 @@ def load_jsonlines(file):
     
 def load_file(input_fp):
     if input_fp.endswith(".json"):
-        input_data = json.load(open(input_fp))
+        with open(input_fp, "r", encoding="utf-8") as f:
+            input_data = json.load(f)
     else:
         input_data = load_jsonlines(input_fp)
     return input_data
@@ -73,70 +74,66 @@ def postprocess_answers_closed(output, task, choices=None):
         return final_output
 
 def clean_dict_list(input_data):
-    """
-    清洗包含None值的字典列表。
-    
-    Args:
-        input_data (list): 包含字典的列表。
-        
-    Returns:
-        list: 清洗后的字典列表。
-    """
+
     cleaned_data = []
     for d in input_data:
-        # 检查每个字典是否包含None值
+
         if all(value is not None for value in d.values()):
             cleaned_data.append(d)
     return cleaned_data
 
 def find_first_boolean_batch(strings):
-    # 用于保存每个字符串中第一次出现的"true"或"false"
     results = []
 
-    # 正则表达式，用于匹配"true"或"false"
     pattern = re.compile(r"\b(true|false)\b")
 
     for string in strings:
-        # 搜索当前字符串中的"true"或"false"
         match = pattern.search(string)
         if match:
-            # 如果找到，添加到结果列表
             results.append(match.group())
         else:
-            # 如果没有找到，可以根据需要添加None或者保持不添加
             results.append(None)
 
     return results
 
 def find_first_boolean(string):
-    # 正则表达式，用于匹配"true"或"false"
     pattern = re.compile(r"\b(true|false)\b", re.IGNORECASE)
-
-    # 搜索当前字符串中的"true"或"false"
     match = pattern.search(string)
     if match:
-        # 如果找到，返回匹配的单词
         return match.group()
     else:
-        # 如果没有找到，返回None
         return None
         
 def string_to_boolean(s):
-    # 将字符串转换为小写，以便不区分大小写进行比较
     if s == 'true':
         return True
     elif s == 'false':
         return False
     else:
-        # 如果输入不是"true"或"false"，可以返回None或者抛出异常
         return None
 
-def find_first_digit(string):
+def find_first_digit(text: str):
     """
-    Find the first digit in a given string and return it as an integer.
-    If no digit is found, return None.
+    Return the first choice digit (1-4) found in `text`.
+    Robust to unicode subscripts (₁₂₃₄) and fullwidth digits (１２３４).
     """
-    for char in string:
-        if char.isdigit():
-            return int(char)
+    if text is None:
+        return None
+
+    trans = str.maketrans({
+        "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+        "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+        "０": "0", "１": "1", "２": "2", "３": "3", "４": "4",
+        "５": "5", "６": "6", "７": "7", "８": "8", "９": "9",
+    })
+    s = str(text).translate(trans)
+
+    for ch in s:
+        if ch in ("1", "2", "3", "4"):
+            return int(ch)
+
+    for ch in s:
+        if "0" <= ch <= "9":
+            return int(ch)
+
     return None

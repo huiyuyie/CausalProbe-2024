@@ -38,56 +38,56 @@ PROMPT_DICT = {
     # CausalProbe w/o contexts
     "prompt_mcqa_causalprobe_NOcontext": (
         "Question: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice and do not explain. Answer:"
+        "Pick one choice and do not explain. Output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_cot_causalprobe_NOcontext": (
         "Question: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Let's think it step-by-step. Answer:"
+        "Let's think it step-by-step. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_retrieval_causalprobe_NOcontext": (
         "Retrieved information:\n{paragraph}\n"
         "Answer the following question based on the retrieved information as a reference (if useful).\n"
         "Question: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice and do not explain. Answer:"
+        "Pick one choice and do not explain. Output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_cot_retrieval_causalprobe_NOcontext": (
         "Retrieved information:\n{paragraph}\n"
         "Answer the following question based on the retrieved information as a reference (if useful).\n"
         "Question: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Let's think it step-by-step. Answer:"
+        "Let's think it step-by-step. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_g2reasoner_causalprobe_NOcontext": (
         "You are an intelligent causal reasoner. To arrive at the correct answer, carefully analyze the available information and logically infer the most probable causal relationship. Related general knowledge can be a reference if useful.\n\n"
         "General knowledge:\n{paragraph}\n"
         "Question: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice and do not explain. Answer:"
+        "Pick one choice. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     # CausalProbe /w contexts
     "prompt_mcqa_causalprobe": (
         "Context: {context}\nQuestion: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice and do not explain. Answer:"
+        "Pick one choice and do not explain. Output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_cot_causalprobe": (
         "Context: {context}\nQuestion: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Let's think it step-by-step. Answer:"
+        "Let's think it step-by-step. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_retrieval_causalprobe": (
         "Retrieved information:\n{paragraph}\n"
         "Answer the following question based on its context, and the retrieved information as a reference (if useful).\n"
         "Context: {context}\nQuestion: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice and do not explain. Answer:"
+        "Pick one choice and do not explain. Output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_cot_retrieval_causalprobe": (
         "Retrieved information:\n{paragraph}\n"
         "Answer the following question based on its context, and the retrieved information as a reference (if useful).\n"
         "Context: {context}\nQuestion: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Let's think it step-by-step. Answer:"
+        "Let's think it step-by-step. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     "prompt_mcqa_g2reasoner_causalprobe": (
         "General knowledge is as follows:\n{paragraph}\n"
         "You should objectively discern the most probable causal relationship based on the available evidence to work out correct answer.\n"
         "Context: {context}\nQuestion: {question}\nAnswer Choices:\n1. {choice_1}\n2. {choice_2}\n3.{choice_3}\n4.{choice_4}\n"
-        "Pick one choice. Answer:"
+        "Pick one choice. Then output ONLY the final answer in this format: Answer: <1 or 2 or 3 or 4>"
     ),
     # e-Care
     "prompt_mcqa_ecare": (
