@@ -15,34 +15,7 @@ Unlike the original implementation, our experiments are conducted in a **CPU-com
 
 ---
 
-# Project Structure
 
-CausalProbe-2024/
-│
-├── benchmarks/
-│   └── CausalProbe2024/
-│       ├── CausalProbe-E.json
-│       └── CausalProbe-H.json
-│
-├── kb/
-│   ├── general_knowledge_passages.jsonl
-│   └── general_knowledge_embeddings/
-│
-├── result_logs/
-│   ├── E/
-│   └── H/
-│
-├── retrieved_docs/
-│
-├── main_ollama.py
-├── passage_retrieval.py
-├── generate_embeddings.py
-├── prompts.py
-├── utils.py
-│
-└── rerun_no_choice_by_id.py
-
----
 
 # Environment Setup
 
