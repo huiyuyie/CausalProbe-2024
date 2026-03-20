@@ -86,27 +86,80 @@ multiple_choice_match
 
 # Build Retrieval Embeddings
 
-python generate_embeddings.py   --model_name_or_path facebook/contriever-msmarco   --output_dir kb/general_knowledge_embeddings   --prefix passages   --passages kb/general_knowledge_passages.jsonl   --shard_id 0   --num_shards 1   --per_gpu_batch_size 16   --passage_maxlength 256
+python generate_embeddings.py
+--model_name_or_path facebook/contriever-msmarco
+--output_dir kb/general_knowledge_embeddings
+--prefix passages
+--passages kb/general_knowledge_passages.jsonl
+--shard_id 0
+--num_shards 1
+--per_gpu_batch_size 16
+--passage_maxlength 256
 
 
 # Vanilla
 
-python main_ollama.py   --model_name deepseek-v3.1:671b-cloud   --input_file benchmarks/CausalProbe2024/CausalProbe-E.json   --mode vanilla   --batch_size 1   --max_new_tokens 128   --metric multiple_choice_match   --prompt_name prompt_mcqa_causalprobe   --task qa   --result_fp_base result_logs/E/
+python main_ollama.py
+--model_name deepseek-v3.1:671b-cloud
+--input_file [benchmark dir]
+--mode vanilla  
+--batch_size 1  
+--max_new_tokens 128  
+--metric multiple_choice_match 
+--prompt_name prompt_mcqa_causalprobe  
+--task qa  
+--result_fp_base result_logs
 
 
 # CoT
 
-python main_ollama.py   --model_name deepseek-v3.1:671b-cloud   --input_file benchmarks/CausalProbe2024/CausalProbe-E.json   --mode vanilla   --batch_size 1   --max_new_tokens 128   --metric multiple_choice_match   --prompt_name prompt_mcqa_cot_causalprobe   --task qa   --result_fp_base result_logs/E/
+python main_ollama.py 
+--model_name deepseek-v3.1:671b-cloud  
+--input_file [benchmark dir]
+--mode vanilla 
+--batch_size 1  
+--max_new_tokens 128 
+--metric multiple_choice_match  
+--prompt_name prompt_mcqa_cot_causalprobe 
+--task qa   
+--result_fp_base result_logs
 
 
 # RAG
 
-python main_ollama.py   --model_name deepseek-v3.1:671b-cloud   --input_file benchmarks/CausalProbe2024/CausalProbe-E.json   --mode retrieval   --batch_size 1   --max_new_tokens 128   --metric multiple_choice_match   --prompt_name prompt_mcqa_retrieval_causalprobe   --task qa   --result_fp_base result_logs/E/   --passages kb/general_knowledge_passages.jsonl   --passages_embeddings kb/general_knowledge_embeddings/passages_*   --passages_source general_knowledge   --retriever_path facebook/contriever-msmarco
+python main_ollama.py 
+--model_name deepseek-v3.1:671b-cloud 
+--input_file [benchmark dir]
+--mode retrieval 
+--batch_size 1 
+--max_new_tokens 128 
+--metric multiple_choice_match 
+--prompt_name prompt_mcqa_retrieval_causalprobe  
+--task qa  
+--result_fp_base result_logs
+--passages kb/general_knowledge_passages.jsonl 
+--passages_embeddings kb/general_knowledge_embeddings/passages_* 
+--passages_source general_knowledge  
+--retriever_path facebook/contriever-msmarco
+
 
 
 # G²‑Reasoner
 
-python main_ollama.py   --model_name deepseek-v3.1:671b-cloud   --input_file benchmarks/CausalProbe2024/CausalProbe-E.json   --mode retrieval   --batch_size 1   --max_new_tokens 128   --metric multiple_choice_match   --prompt_name prompt_mcqa_g2reasoner_causalprobe   --task qa   --result_fp_base result_logs/E/   --passages kb/general_knowledge_passages.jsonl   --passages_embeddings kb/general_knowledge_embeddings/passages_*   --passages_source general_knowledge   --retriever_path facebook/contriever-msmarco
+python main_ollama.py 
+--model_name deepseek-v3.1:671b-cloud 
+--input_file [benchmark dir]
+--mode retrieval  
+--batch_size 1  
+--max_new_tokens 128 
+--metric multiple_choice_match
+--prompt_name prompt_mcqa_g2reasoner_causalprobe
+--task qa 
+--result_fp_base result_logs 
+--passages kb/general_knowledge_passages.jsonl
+--passages_embeddings kb/general_knowledge_embeddings/passages_* 
+--passages_source general_knowledge
+--retriever_path facebook/contriever-msmarco
 
 
 # Error Handling
