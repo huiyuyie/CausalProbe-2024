@@ -85,7 +85,7 @@ multiple_choice_match
 
 
 # Build Retrieval Embeddings
-
+```
 python generate_embeddings.py
 --model_name_or_path facebook/contriever-msmarco
 --output_dir kb/general_knowledge_embeddings
@@ -95,10 +95,10 @@ python generate_embeddings.py
 --num_shards 1
 --per_gpu_batch_size 16
 --passage_maxlength 256
-
+```
 
 # Vanilla
-
+```
 python main_ollama.py
 --model_name deepseek-v3.1:671b-cloud
 --input_file [benchmark dir]
@@ -109,10 +109,10 @@ python main_ollama.py
 --prompt_name prompt_mcqa_causalprobe  
 --task qa  
 --result_fp_base result_logs
-
+```
 
 # CoT
-
+```
 python main_ollama.py 
 --model_name deepseek-v3.1:671b-cloud  
 --input_file [benchmark dir]
@@ -123,10 +123,10 @@ python main_ollama.py
 --prompt_name prompt_mcqa_cot_causalprobe 
 --task qa   
 --result_fp_base result_logs
-
+```
 
 # RAG
-
+```
 python main_ollama.py 
 --model_name deepseek-v3.1:671b-cloud 
 --input_file [benchmark dir]
@@ -141,11 +141,11 @@ python main_ollama.py
 --passages_embeddings kb/general_knowledge_embeddings/passages_* 
 --passages_source general_knowledge  
 --retriever_path facebook/contriever-msmarco
-
+```
 
 
 # G²‑Reasoner
-
+```
 python main_ollama.py 
 --model_name deepseek-v3.1:671b-cloud 
 --input_file [benchmark dir]
@@ -160,7 +160,7 @@ python main_ollama.py
 --passages_embeddings kb/general_knowledge_embeddings/passages_* 
 --passages_source general_knowledge
 --retriever_path facebook/contriever-msmarco
-
+```
 
 # Error Handling
 
